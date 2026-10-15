@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://bglqf6x653nwp"]
+
+[ext_resource type="PackedScene" uid="uid://dhgrrs5brn2tu" path="res://cloud.scn" id="1_ig7tw"]
+
+[node name="Node2D" type="Node2D" unique_id=1559418212]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1660761744]
+custom_minimum_size = Vector2(640, 480)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 641.0
+offset_bottom = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.73, 0.44456998, 0.2263, 1)
+
+[node name="cloud" parent="." unique_id=1204522982 instance=ExtResource("1_ig7tw")]
+position = Vector2(201, 108)
+
+[node name="cloud2" parent="." unique_id=360748008 instance=ExtResource("1_ig7tw")]
+position = Vector2(373, 98)
+
+[node name="cloud3" parent="." unique_id=433449799 instance=ExtResource("1_ig7tw")]
+position = Vector2(289, 143)
+
+[node name="cloud4" parent="." unique_id=536172307 instance=ExtResource("1_ig7tw")]
+position = Vector2(419, 151)
+
+[node name="cloud5" parent="." unique_id=665119029 instance=ExtResource("1_ig7tw")]
+position = Vector2(507.99997, 111)
+
+[node name="cloud6" parent="." unique_id=1324353153 instance=ExtResource("1_ig7tw")]
+position = Vector2(51, 175)
+
+[node name="cloud7" parent="." unique_id=640816350 instance=ExtResource("1_ig7tw")]
+position = Vector2(131, 145)
+
+[node name="cloud8" parent="." unique_id=1376236314 instance=ExtResource("1_ig7tw")]
+position = Vector2(280, 70)
+
+[node name="cloud9" parent="." unique_id=515809057 instance=ExtResource("1_ig7tw")]
+position = Vector2(67, 86)
+
+[node name="cloud10" parent="." unique_id=1668006847 instance=ExtResource("1_ig7tw")]
+position = Vector2(551, 66)
+
+[node name="cloud11" parent="." unique_id=1437539270 instance=ExtResource("1_ig7tw")]
+position = Vector2(196, 174)
+
+[node name="cloud12" parent="." unique_id=2128073034 instance=ExtResource("1_ig7tw")]
+position = Vector2(520, 169)

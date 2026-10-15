@@ -13,6 +13,7 @@ var _palettes = {
 const BAYER = [[0,8,2,10],[12,4,14,6],[3,11,1,9],[15,7,13,5]]
 
 @onready var visual = $visual
+@onready var visual_2: MeshInstance2D = $visual2
 
 @export_tool_button('Generate') var btn_generate = generate
 
@@ -104,3 +105,17 @@ func generate():
         #const xx = x + a, yy = y + b; return xx >= 0 && yy >= 0 && xx < W && yy < H && grid[yy*W + xx] >= 0; });
       #put(x, y, edge ? out : sky);
   visual.texture = ImageTexture.create_from_image(img)
+
+var speed:float = 10.0;
+
+func _ready()->void:
+  speed = randf_range(5, 20)
+  visual_2.set_instance_shader_parameter(&"seed", randf())
+  visual_2.set_instance_shader_parameter(&"puffs", randi_range(3, 7))
+  #visual_2.set_instance_shader_parameter(&"alpha", speed / 20.0)
+
+func _process(delta: float) -> void:
+  if Engine.is_editor_hint(): return
+  position.x -= delta * speed;
+  if position.x < -50:
+    position.x = 700
