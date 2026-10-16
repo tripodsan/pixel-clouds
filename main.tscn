@@ -1,8 +1,14 @@
 [gd_scene format=3 uid="uid://bglqf6x653nwp"]
 
 [ext_resource type="Script" uid="uid://dqns1bpwyul6h" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="FontFile" uid="uid://4ca405s6akgq" path="res://monogram.ttf" id="2_0xm2m"]
+
+[sub_resource type="Theme" id="Theme_hqkmm"]
+default_font = ExtResource("2_0xm2m")
+default_font_size = 16
 
 [node name="demo" type="Node2D" unique_id=1559418212]
+texture_filter = 1
 script = ExtResource("1_0xm2m")
 
 [node name="sky" type="ColorRect" parent="." unique_id=1660761744]
@@ -22,3 +28,27 @@ color = Color(0.73, 0.44456998, 0.2263, 1)
 [node name="clouds_d1" type="Node2D" parent="." unique_id=1512488836]
 
 [node name="clouds_d2" type="Node2D" parent="." unique_id=85394146]
+
+[node name="Control" type="Control" parent="." unique_id=493460824]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_hqkmm")
+
+[node name="OptionButton" type="OptionButton" parent="Control" unique_id=795384724]
+layout_mode = 0
+offset_right = 97.0
+offset_bottom = 31.0
+selected = 0
+item_count = 4
+popup/item_0/text = "Day"
+popup/item_0/id = 0
+popup/item_1/text = "Night"
+popup/item_1/id = 1
+popup/item_2/text = "Spooky"
+popup/item_2/id = 2
+popup/item_3/text = "Sunset"
+popup/item_3/id = 3
+
+[connection signal="item_selected" from="Control/OptionButton" to="." method="_on_option_button_item_selected"]

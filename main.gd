@@ -17,19 +17,28 @@ var SKY_COLORS = {
     palette = value
     _update_params()
 
+var spawn_rect:Vector2
+
 func _ready() -> void:
+  spawn_rect = get_viewport_rect().size
   _create_clouds()
   _update_params()
+
+func get_spawn_point()->Vector2:
+  # ensure that clouds are scattered in bands
+  return Vector2(randf_range(0, spawn_rect.x), randi_range(0, 4) * floor(spawn_rect.y / 4.0) + randf() * 10.0 + 40)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
   for i in clouds.size():
-    var speed:float = 10.0 + i * 5.0
+    var speed:float = 5.0 + i * 5.0
     for c:Cloud in clouds[i].get_children():
       c.position.x -= speed * delta
       if c.position.x < -50:
         c.queue_free()
-        _spawn_cloud(Vector2(700, randi_range(50, 150)))
+        var p:Vector2 = get_spawn_point()
+        p.x = spawn_rect.x + 50
+        _spawn_cloud(p)
 
 func _spawn_cloud(p:Vector2):
   var c:Cloud = scn_cloud.instantiate()
@@ -43,7 +52,7 @@ func _spawn_cloud(p:Vector2):
 
 func _create_clouds():
   for i in 15:
-    _spawn_cloud(Vector2(randi_range(0, 640), randi_range(50, 150)))
+    _spawn_cloud(get_spawn_point())
 
 func _update_params():
   if not sky: return
@@ -51,3 +60,7 @@ func _update_params():
   for i in clouds.size():
     for c:Cloud in clouds[i].get_children():
       c.palette = palette
+
+
+func _on_option_button_item_selected(index: int) -> void:
+  palette = index
